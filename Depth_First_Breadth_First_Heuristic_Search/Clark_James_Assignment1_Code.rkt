@@ -94,40 +94,20 @@
   )
 
 
-;UNCOMMENT TO RUN DEPTH FIRST SEARCH
-;(println "BEGIN DEPTH FIRST SEARCH")
-;(firstLevelDepthFirst (list) listOfWords)
+
 
 ;----------------------------------------------------
 ;---------- Breadth First Search --------------------
 ;----------------------------------------------------
 
-#|
-(define listOfWords (list "add" "ado" "age" "ago" "aid" "ail" "aim"
-                          "air" "and" "any" "ape" "apt" "arc" "are"
-                          "ark" "arm" "art" "ash" "ask" "auk" "awe" "awl"
-                          "aye" "bad" "bag" "ban" "bat" "bee" "boa" "ear"
-                          "eel" "eft" "far" "fat" "fit" "lee" "oaf" "rat" "tar"
-                          "tie"))
 
-(define (listToString myList)
-  (apply string-append myList))
-
-(define (getH1 yo)
-  (listToString (list (string (string-ref (car yo) 0))(string (string-ref (cadr yo) 0)) (string (string-ref (caddr yo) 0)))))
-(define (getH2 yo)
-  (listToString (list (string (string-ref (car yo) 1))(string (string-ref (cadr yo) 1)) (string (string-ref (caddr yo) 1)))))
-(define (getH3 yo)
-  (listToString (list (string (string-ref (car yo) 2))(string (string-ref (cadr yo) 2)) (string (string-ref (caddr yo) 2)))))
-|#
 (define (enque el queue)
    (append queue (list el)))
 
 (define (enque2 el queue)
   (cons  queue(list el)))
 
-;(define (push el stack)
- ; (cons el stack))
+
 
 (define (fixqueue queue newqueue)
   (cond
@@ -135,13 +115,7 @@
      (car (list newqueue)))
     ((< 0 (length queue))
      (fixqueue (cdr queue)(enque (flatten (car queue)) newqueue)))))
-#|
-(define (writeStuff horizontal vertical)
-  (write "Goal Found")
-  (write horizontal)
-  (write vertical))
 
-|#
 (define (checkForGoalBreadthFirst queue)
   (cond
     ((null? queue)
@@ -187,9 +161,6 @@
      (firstLevelBreadthFirst (enque (car listPassed) queue) (cdr listPassed))))
   )
 
-; Uncomment to Run Breadth First
-;(println "Breadth First Search Started")
-;(firstLevelBreadthFirst (list) listOfWords)
 
 
 ;-----------------------------------------
@@ -257,6 +228,15 @@
   )
 
 
-;UnComment toRun
-(println "Begin Heuristic/ Best Fit Search")
-(firstLevelHeuristic (list) listOfWords)
+;UNCOMMENT TO RUN DEPTH FIRST SEARCH
+(println "BEGIN DEPTH FIRST SEARCH")
+(firstLevelDepthFirst (list) listOfWords)
+
+;UnComment to Run Breadth First Search
+;FYI Breadth First Takes a While
+;(println "Begin BreadthFirst Search")
+;(firstLevelBreadthFirst (list) listOfWords)
+
+;Uncomment to run the Heuristic Search
+;(println "Begin Heuristic/ Best Fit Search")
+;(firstLevelHeuristic (list) listOfWords)
